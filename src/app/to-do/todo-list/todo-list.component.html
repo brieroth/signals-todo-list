@@ -1,0 +1,10 @@
+<h3>To Do list</h3>
+<app-todo-list-input (newTask)="getTask($event)"></app-todo-list-input>
+
+
+<h3>existing list</h3>
+<div *ngFor="let item of tasks()" style="display: flex;">
+    <div style="margin-right: 10px;"> {{item.title}}</div>
+    <input style="margin-right: 10px;" type="checkbox" [(ngModel)]="item.completed" />
+    <button (click)="deleteTask(item.id)">delete</button>
+</div>
