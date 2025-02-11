@@ -1,0 +1,55 @@
+<section class="todo-component-container">
+    <app-search-task (searchTerm)="getSearchTerm($event)"></app-search-task>
+    
+
+    <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px grid">
+       <!--  <h1>Tasks</h1>
+        <div>
+            <div>
+                <mat-form-field appearance="outline" class="form-input">
+                    <mat-label>find task...</mat-label>
+                    <input matInput [(ngModel)]="searchTerm" />
+                    <button matSuffix mat-icon-button (click)="filterTaskByTitle(searchTerm())">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </button>
+                    <button matSuffix mat-icon-button (click)="reset();">
+                        <mat-icon matSuffix>refresh</mat-icon>
+                    </button>
+                </mat-form-field> -->
+
+                <!-- ADD ONS..... -->
+                <!-- <button matSuffix mat-icon-button (click)="signalService.filterTaskByCompletedStatus()"
+                    matTooltip="display completed tasks">
+                    <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="check"></mat-icon>
+                </button>
+                <button matSuffix mat-icon-button (click)="signalService.filterTaskByUncompletedStatus()">
+                    <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="flag"></mat-icon>
+                </button> -->
+
+            <!-- </div>
+        </div> -->
+        <mat-list *ngFor="let task of tasks()" fxFlex="100" fxLayout="row wrap">
+            <mat-list-item
+                style="margin-right: 10px;margin-right: 10px; border: 1px solid grey; border-radius: 10px; height: auto;">
+                <div style="display: flex; align-items: center;">
+                    <input style="margin-right: 10px;" type="checkbox" [checked]="task.status"
+                        (change)="toggleTaskCompletion(task.id)" />
+                    <p style="flex-grow: 4;">{{task.title}} </p>
+                    <div>
+                        <button matSuffix mat-icon-button (click)="editTask(task)">
+                            <mat-icon matSuffix>edit</mat-icon>
+                        </button>
+                        <button matSuffix mat-icon-button (click)="deleteTask(task.id)">
+                            <mat-icon matSuffix>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <footer>
+        <button mat-icon-button (click)="addTask()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </footer>
+</section>

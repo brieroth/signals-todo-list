@@ -1,0 +1,47 @@
+.todo-component-container {
+    .form-input {
+        display: flex;
+    }
+
+
+::ng-deep mat-list-item .mdc-list-item__primary-text {
+    white-space: break-spaces !important;
+}
+
+footer{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    padding-top: 10px;
+
+    button{
+        background: #f59864; 
+        color:white;
+         width: 70px; 
+         height: 70px;
+    }
+}
+@media (max-width: 566px) {
+    footer {
+        background: rgb(210, 136, 224) !important;
+     }
+ }
+@media (min-width: 567px) {
+   footer {
+       background: yellow !important;
+    }
+}
+@media (min-width: 768px) {
+    footer {
+        background: pink !important;
+     }
+ }
+ @media (min-width: 992px) {
+    footer {
+        background: rgb(179, 183, 233) !important;
+     }
+ }
+
+}

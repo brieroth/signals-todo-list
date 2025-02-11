@@ -1,0 +1,19 @@
+<div class="task-add-container">
+    <h2>New task....</h2>
+    <form [formGroup]="form" class="form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>title...</mat-label>
+            <input matInput type="text" formControlName="taskTitle" id="taskTitle" />
+            <mat-error *ngIf="taskTitle?.hasError('required')">
+                A task title is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="description">
+            <mat-label>description...</mat-label>
+            <input matInput type="text" formControlName="taskDescription" />
+        </mat-form-field>
+        <button mat-raised-button [disabled]="form.invalid" (click)="submit()" class="add-button">
+            {{activeTaskId() ? 'Update' : 'Add'}}
+        </button>
+    </form>
+</div>

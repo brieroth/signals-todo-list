@@ -1,0 +1,28 @@
+.task-add-container {
+    margin: 20px;
+
+    .form-container{
+        display: grid;
+
+        .description {
+            min-height: 150px; 
+            width: auto;
+            white-space: inherit;
+
+        }
+
+        .add-button{
+            width: 30%; 
+            margin: auto;
+            background: #f1711a;
+            color: white;
+        }
+
+        .add-button[disabled] {
+            cursor: none;
+            background-color: rgb(211, 210, 210);
+        }
+
+    }
+
+}
