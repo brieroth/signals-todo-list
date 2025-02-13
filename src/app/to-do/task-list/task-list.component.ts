@@ -28,9 +28,9 @@ export class TaskListComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   public tasks: WritableSignal<any[]> = signal(Items);
-  public searchTerm: WritableSignal<string> = signal('') //store searchterm
+  public searchTerm: WritableSignal<string> = signal('') 
   public selectedTask: TODO[] = [];
-  public allTasks = [...this.tasks()]; // Store the all tasks to reset when needed
+  public allTasks = [...this.tasks()];
 
   constructor(public signalService: TaskSignalService) { }
 
@@ -39,16 +39,15 @@ export class TaskListComponent implements OnInit {
   }
 
   public addTask(): void {
-    const dialogRef = this.dialog.open(AddTaskComponent, {
+    this.dialog.open(AddTaskComponent, {
       data: [],
       width: '600px',
     });
-    dialogRef.close()
   }
 
   public editTask(task: any) {
     this.selectedTask = task.id
-    const dialogRef = this.dialog.open(AddTaskComponent, {
+    this.dialog.open(AddTaskComponent, {
       data: {
         id: task.id,
         newTaskTitle: task.title,
@@ -56,7 +55,6 @@ export class TaskListComponent implements OnInit {
       },
       width: '600px',
     });
-    dialogRef.close();
   }
 
   public deleteTask(task: number) {
