@@ -3,23 +3,37 @@
 html,
 
 body {
-    margin: 0 20px;
+    margin: 20px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .header,
-.content,
-.footer {
+.content
+{
     padding: 20px;
-}
+} 
 
-@media (min-width: 768px) {
-    /* content {
-        border: 1px solid grey;
-        padding: 40px;
-     } */
- }
+footer {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+.mdc-list-item__primary-text {
+    white-space: break-spaces !important;
+}
+mat-form-field input {
+    white-space: break-spaces !important;  
+    word-wrap: break-word;  
+    overflow-wrap: break-word;  
+    
+}

@@ -1,7 +1,7 @@
-<div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px grid">
-    <h1>Tasks</h1>
-    <div>
-        <div>
+<section fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px grid">
+    <h1>To do list....</h1>
+    <section>
+        <section>
             <mat-form-field appearance="outline" class="form-input">
                 <mat-label>find task...</mat-label>
                 <input matInput [(ngModel)]="titleTerm"/>
@@ -9,15 +9,5 @@
                     <mat-icon matSuffix>search</mat-icon>
                 </button>
             </mat-form-field>
-
-            <!-- ADD ONS..... -->
-            <!-- <button matSuffix mat-icon-button (click)="signalService.filterTaskByCompletedStatus()"
-                matTooltip="display completed tasks">
-                <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="check"></mat-icon>
-            </button>
-            <button matSuffix mat-icon-button (click)="signalService.filterTaskByUncompletedStatus()">
-                <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="flag"></mat-icon>
-            </button> -->
-
-        </div>
-    </div>
+        </section>
+    </section>

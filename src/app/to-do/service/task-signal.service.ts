@@ -8,6 +8,10 @@ import { TODO } from '../shared/models/todo.model';
 })
 export class TaskSignalService {
   private tasks = signal<TODO[]>(Items)
+  public completedCount = signal<number>(this.tasks().filter(task => task.status).length);
+  public pendingCount = signal<number>(this.tasks().filter(task => !task.status).length);
+
+  constructor(){}
 
   public getTodoList() {
     return this.tasks;
@@ -21,55 +25,51 @@ export class TaskSignalService {
       dateCreated: moment(new Date()),
       description: description
     }
-    this.tasks.update(todos => [...todos, item])
+    this.tasks.update(tasks => [...tasks, item])
   }
 
   public editTask(id: number, newDescription: string) {
     console.log(id, newDescription)
-    // update task()state and use map to iterarte over the todos array and update task that matches the id
-    this.tasks.update((todos) =>
-      todos.map((task) =>
-                          //...create a new object with updates description or return task with no shanges if doesnt match
+    this.tasks.update((tasks) =>
+      tasks.map((task) =>
         task.id === id ? { ...task, description: newDescription } : task))
-
   }
 
   public updateTaskStatus(index: number) {
-    this.tasks.update((todos) =>
-      todos.map((a) => a.id === index ? { ...a, status: !a.status } : a
+    this.tasks.update((tasks) =>
+      tasks.map((task) => task.id === index ? { ...task, status: !task.status } : task
       )
     );
     console.log(this.tasks())
+    this.updateTaskCount()
+  }
+
+  public updateTaskCount() {
+    this.completedCount.set(this.tasks().filter(task => task.status).length);
+    this.pendingCount.set(this.tasks().filter(task => !task.status).length);
   }
 
   public deleteTask(index: number) {
-    return this.tasks.update(todos => todos.filter(a => a.id !== index))
+    const taskToRemove =this.tasks.update(tasks => tasks.filter(task => task.id !== index))
+    this.updateTaskCount()
+    return taskToRemove
   }
 
-   public filterTaskByCompletedStatus() {
-    const completedTasks = this.tasks.update(todos => todos.filter(a => a.status === true))
+  public filterTaskByCompletedStatus() {
+    const completedTasks = this.tasks.update(tasks => tasks.filter(task => task.status))
+    this.updateTaskCount();
     return completedTasks
   }
 
   public filterTaskByUncompletedStatus() {
-    const unCompletedTasks = this.tasks.update(todos => todos.filter(a => !a.status))
+    const unCompletedTasks = this.tasks.update(tasks => tasks.filter(task => !task.status))
+    this.updateTaskCount();
     return unCompletedTasks;
   }
 
   public filterTaskByTitle(title: string) {
-    // const searchReturn = this.tasks.update(todos => todos.filter(a => a.title === title))
-    const searchReturn =  this.tasks().filter(task => task.title.includes(title));
-
-    return this.tasks.update(()=>searchReturn);
+    const searchReturn = this.tasks().filter(task => task.title.includes(title));
+    return this.tasks.update(() => searchReturn);
   }
-
-
-
-
-
-
-
-
-
 
 }

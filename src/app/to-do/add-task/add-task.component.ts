@@ -44,16 +44,17 @@ export class AddTaskComponent {
     return this.form.get('taskTitle')
   }
 
-  public submit() {
+  public submitForm() {
     if (this.activeTaskId() !== null) {
       this.signalService.editTask(this.activeTaskId(), this.form.get('taskDescription')?.value)
     }
     else {
-      const newTodoTitle = this.form.get('taskTitle')?.value?.trim();
+      const newTodoTitle = this.form.get('taskTitle')?.value;
       const newTodoDescription = this.form.get('taskDescription')?.value;
+
       this.signalService.addTask(newTodoTitle, newTodoDescription)
     }
-    this.dialogRef.close(this.form.value)
+    this.dialogRef.close()
     this.form?.reset()
   }
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component,inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,7 @@ import { SearchTaskComponent } from '../search-task/search-task.component';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [RouterOutlet, MatTooltipModule, SearchTaskComponent, MatDialogModule, FormsModule, MatListModule, CommonModule, MatIconModule, AddTaskComponent, MatDividerModule, FormsModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButton, MatIconButton],
+  imports: [RouterOutlet, MatTooltipModule, SearchTaskComponent, MatDialogModule, FormsModule, MatListModule, CommonModule, MatIconModule, AddTaskComponent, MatBadgeModule, FormsModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButton, MatIconButton],
   templateUrl: `./task-list.component.html`,
   styleUrl: `./task-list.component.scss`
 })
@@ -28,10 +28,7 @@ export class TaskListComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   public tasks: WritableSignal<any[]> = signal(Items);
-
   public searchTerm: WritableSignal<string> = signal('') //store searchterm
-
-
   public selectedTask: TODO[] = [];
   public allTasks = [...this.tasks()]; // Store the all tasks to reset when needed
 
@@ -46,9 +43,7 @@ export class TaskListComponent implements OnInit {
       data: [],
       width: '600px',
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('added:', result);
-    });
+    dialogRef.close()
   }
 
   public editTask(task: any) {
@@ -61,9 +56,7 @@ export class TaskListComponent implements OnInit {
       },
       width: '600px',
     });
-    dialogRef.afterClosed().subscribe(updateRes => {
-      console.log('updated', updateRes)
-    });
+    dialogRef.close();
   }
 
   public deleteTask(task: number) {
@@ -71,7 +64,7 @@ export class TaskListComponent implements OnInit {
   }
 
   public getSearchTerm(term: string) {
-    this.searchTerm.update(() => term); // Update the search term signal
+    this.searchTerm.update(() => term);
     if (this.searchTerm()) {
       this.signalService.filterTaskByTitle(this.searchTerm())
     } else {
@@ -81,5 +74,18 @@ export class TaskListComponent implements OnInit {
 
   public toggleTaskCompletion(task: number) {
     this.signalService.updateTaskStatus(task)
+  }
+
+  public getCompletedTasks() {
+    this.signalService.filterTaskByCompletedStatus()
+  }
+
+  public getPendingTasks() {
+    this.signalService.filterTaskByUncompletedStatus()
+  }
+
+  public refreshTasks() {
+    this.tasks.set([...this.allTasks]);
+    this.signalService.updateTaskCount();
   }
 }

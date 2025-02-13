@@ -3,45 +3,75 @@
         display: flex;
     }
 
-
-::ng-deep mat-list-item .mdc-list-item__primary-text {
-    white-space: break-spaces !important;
-}
-
-footer{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10%;
-    padding-top: 10px;
-
-    button{
-        background: #f59864; 
-        color:white;
-         width: 70px; 
-         height: 70px;
+    .strikethrough {
+        text-decoration: line-through;
+        color: grey; 
     }
-}
-@media (max-width: 566px) {
-    footer {
-        background: rgb(210, 136, 224) !important;
-     }
- }
-@media (min-width: 567px) {
-   footer {
-       background: yellow !important;
+    .mat-list-item_container{
+        margin-right: 10px; 
+        border: 1px solid grey; 
+        border-radius: 10px; 
+        height: auto;
+
+        section{
+            display: flex; 
+            align-items: center;
+        }
+        input{
+            margin-right: 10px;
+        }
+        p{
+            flex-grow: 4;
+        }
     }
-}
-@media (min-width: 768px) {
     footer {
-        background: pink !important;
-     }
- }
- @media (min-width: 992px) {
-    footer {
-        background: rgb(179, 183, 233) !important;
-     }
- }
+    
+        button {
+            color: white;
+            width: 70px;
+            height: 70px;
+            margin-right: 20px;
+        }
+
+        .action-add {
+            background: #f59864;
+        }
+
+        .action-completed {
+            background: #24680f;
+        }
+
+        .action-pending {
+            background: #bd5113;
+        }
+
+        .action-refresh {
+            background: #10536f;
+        }          
+    }
+
+    @media (max-width: 566px) {
+        footer {
+            margin-top: 20px;
+        }
+    }
+
+    @media (min-width: 567px) {
+        footer {
+            margin-top: 20px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        footer {
+            margin-top: 10px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        footer {
+            margin-top: 10px;
+        }
+    }
 
 }

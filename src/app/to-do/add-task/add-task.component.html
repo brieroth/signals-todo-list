@@ -1,5 +1,5 @@
-<div class="task-add-container">
-    <h2>New task....</h2>
+<section class="task-add-container">
+    <h2>{{activeTaskId() ? 'Update task' : 'New Task'}}....</h2>
     <form [formGroup]="form" class="form-container">
         <mat-form-field appearance="outline">
             <mat-label>title...</mat-label>
@@ -12,8 +12,8 @@
             <mat-label>description...</mat-label>
             <input matInput type="text" formControlName="taskDescription" />
         </mat-form-field>
-        <button mat-raised-button [disabled]="form.invalid" (click)="submit()" class="add-button">
+        <button mat-raised-button [disabled]="form.invalid" (click)="submitForm()" class="add-button">
             {{activeTaskId() ? 'Update' : 'Add'}}
         </button>
     </form>
-</div>
+</section>

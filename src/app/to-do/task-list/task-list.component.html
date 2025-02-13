@@ -1,55 +1,38 @@
 <section class="todo-component-container">
     <app-search-task (searchTerm)="getSearchTerm($event)"></app-search-task>
-    
-
-    <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px grid">
-       <!--  <h1>Tasks</h1>
-        <div>
-            <div>
-                <mat-form-field appearance="outline" class="form-input">
-                    <mat-label>find task...</mat-label>
-                    <input matInput [(ngModel)]="searchTerm" />
-                    <button matSuffix mat-icon-button (click)="filterTaskByTitle(searchTerm())">
-                        <mat-icon matSuffix>search</mat-icon>
-                    </button>
-                    <button matSuffix mat-icon-button (click)="reset();">
-                        <mat-icon matSuffix>refresh</mat-icon>
-                    </button>
-                </mat-form-field> -->
-
-                <!-- ADD ONS..... -->
-                <!-- <button matSuffix mat-icon-button (click)="signalService.filterTaskByCompletedStatus()"
-                    matTooltip="display completed tasks">
-                    <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="check"></mat-icon>
-                </button>
-                <button matSuffix mat-icon-button (click)="signalService.filterTaskByUncompletedStatus()">
-                    <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon" fontIcon="flag"></mat-icon>
-                </button> -->
-
-            <!-- </div>
-        </div> -->
-        <mat-list *ngFor="let task of tasks()" fxFlex="100" fxLayout="row wrap">
-            <mat-list-item
-                style="margin-right: 10px;margin-right: 10px; border: 1px solid grey; border-radius: 10px; height: auto;">
-                <div style="display: flex; align-items: center;">
-                    <input style="margin-right: 10px;" type="checkbox" [checked]="task.status"
-                        (change)="toggleTaskCompletion(task.id)" />
-                    <p style="flex-grow: 4;">{{task.title}} </p>
-                    <div>
+    <section fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start start">
+        <mat-list *ngFor="let task of tasks()" fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start center">
+            <mat-list-item class="mat-list-item_container task-title" [ngClass]="{ 'strikethrough': task.status }">
+                <section>
+                    <input type="checkbox" [checked]="task.status" (change)="toggleTaskCompletion(task.id)" />
+                    <p>{{task.title}} </p>
+                    <section>
                         <button matSuffix mat-icon-button (click)="editTask(task)">
                             <mat-icon matSuffix>edit</mat-icon>
                         </button>
                         <button matSuffix mat-icon-button (click)="deleteTask(task.id)">
                             <mat-icon matSuffix>delete</mat-icon>
                         </button>
-                    </div>
-                </div>
+                    </section>
+                </section>
             </mat-list-item>
         </mat-list>
-    </div>
-    <footer>
-        <button mat-icon-button (click)="addTask()">
+    </section>
+    <footer fxLayout="row" fxLayoutAlign="center center">
+        <button mat-icon-button (click)="addTask()" matTooltip="add a task" class="action-add">
             <mat-icon>add</mat-icon>
+        </button>
+        <button matSuffix mat-icon-button (click)="getCompletedTasks()" matTooltip="completed tasks"
+            class="action-completed">
+            <mat-icon matBadge="{{signalService.completedCount()}}" aria-hidden="false" aria-label="task icon" fontIcon="task"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="getPendingTasks()" matTooltip="pending tasks"
+            class="action-pending">
+            <mat-icon matBadge="{{signalService.pendingCount()}}" aria-hidden="false" aria-label="pending icon" fontIcon="task"></mat-icon>
+        </button>
+        <button matSuffix mat-icon-button (click)="refreshTasks()" matTooltip="all tasks"
+            class="action-refresh">
+            <mat-icon matSuffix aria-hidden="false" aria-label="refresh icon" fontIcon="refresh"></mat-icon>
         </button>
     </footer>
 </section>
