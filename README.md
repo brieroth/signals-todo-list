@@ -25,3 +25,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Task
+Create todo list app using signals for state management. 
+Focus on modulartiy, reusablility....
+
+-Structure
+    -main component where the todo list is displayed
+        -each task to have a title and status (complete/not complete)
+        -each item should have a delete, edit button and status displayed
+    **Using Reactive Forms(implement validation)
+        -form to add new tasks
+        -form to edit task description only
+        -form to search for tasks
+
+State Management using Signals
+    -store and manage the tasks array
+    **Service Class (logic) **Component (handle interaction w/ service class to UI)
+    -add task,
+    -mark as complete, 
+    -delete task, 
+    -search tasks by title,
+    -filter tasks (completed, uncompleted...)
+
+Styling
+- Focus on responsiveness & accessability
+
+![image](https://github.com/user-attachments/assets/98c9a8bc-ce67-491f-b80e-f67dfcdb4a39)
+
+
