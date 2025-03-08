@@ -51,4 +51,9 @@ State Management using Signals
 Styling
 - Focus on responsiveness & accessability
 
+![mdLg-toDo](https://github.com/user-attachments/assets/9a51efe2-4917-4533-a3f5-fdb729ea2901)
+![mdLg-toDo-updateTask](https://github.com/user-attachments/assets/dec887e9-43e1-41a6-983e-5007d6007ed9)
+![mobile-toDo-scroll](https://github.com/user-attachments/assets/682c3565-41db-461b-a54b-693d427fdc53)
+![image](https://github.com/user-attachments/assets/80462e8f-298d-4be7-bb76-ab5a22a13eb3)
+
 
