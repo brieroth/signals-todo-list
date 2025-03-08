@@ -36,5 +36,19 @@ export const Items : TODO[]  = [
         status: true,
         dateCreated: moment('2025-02-11T12:30:00Z'),
         description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+    },
+    {
+        id: 6,
+        title: 'Book flights & accommodation for summer vacation',
+        status: true,
+        dateCreated: moment('2025-02-11T12:30:00Z'),
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+    },
+    {
+        id: 7,
+        title: 'Book flights & accommodation for summer vacation',
+        status: false,
+        dateCreated: moment('2025-02-11T12:30:00Z'),
+        description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
     }
 ]

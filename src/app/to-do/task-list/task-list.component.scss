@@ -1,31 +1,172 @@
 .todo-component-container {
+    .search-action-container {
+        display: flex;
+    }
+
     .form-input {
         display: flex;
     }
 
     .strikethrough {
         text-decoration: line-through;
-        color: grey; 
+        color: grey;
     }
-    .mat-list-item_container{
-        margin-right: 10px; 
-        border: 1px solid grey; 
-        border-radius: 10px; 
+
+    .task-list-container {
+        max-height: 380px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .task-list-item_container {
+        margin-right: 10px;
         height: auto;
 
-        section{
-            display: flex; 
+        section {
+            display: flex;
             align-items: center;
         }
-        input{
+
+        input {
             margin-right: 10px;
         }
-        p{
+
+        p {
             flex-grow: 4;
         }
     }
+
+    .tasks-stats-card {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .tasks-stats-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .completed-tasks {
+        background-color: rgb(28, 72, 85) !important;
+        color: white;
+    }
+
+    .pending-tasks {
+        background-color: #af653b !important;
+        color: white;
+
+    }
+
+    .tasks-stats-item {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 20px;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        align-items: center;
+
+
+        .tasks-stats-icon {
+            height: 48px;
+            width: 48px;
+            color: #eceef1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tasks-stats-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+
+        h3 {
+            font-size: 1.2em;
+            margin: 0;
+            color: #eaedf0;
+        }
+
+        p {
+            font-size: 40px;
+            font-weight: bold;
+            color: #eaedf0;
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    }
+
+    mat-card-header {
+        background-color: #eeeeee;
+    }
+
+    mat-card-actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .active {
+        color: goldenrod;
+    }
+
+    .inactive {
+        color: rgb(199, 198, 198);
+    }
+
+    .todo-actions {
+        display: flex;
+        padding-left: 10px;
+    }
+
+    .round-checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        min-width: 30px;
+        min-height: 30px;
+        background-color: #fff;
+        border: 2px solid #1b9203;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .round-checkbox:checked {
+        background-color: #1b9203;
+        border-color: #00b333;
+    }
+
+    .round-checkbox:checked::before {
+        content: '\2713';
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 18px;
+        height: 18px;
+        color: white;
+        border-radius: 50%;
+    }
+
+    .round-checkbox:hover {
+        background-color: rgb(185, 229, 151);
+    }
+
+    .todo-content-container {
+        margin-top: 50px;
+        height: 100%;
+        overflow: visible;
+    }
+
     footer {
-    
+        align-items: center;
+
         button {
             color: white;
             width: 70px;
@@ -47,31 +188,31 @@
 
         .action-refresh {
             background: #10536f;
-        }          
+        }
+    }
+
+    .xs-sm-menu {
+        padding-top: 20px;
     }
 
     @media (max-width: 566px) {
-        footer {
-            margin-top: 20px;
+        .md-lg-menu {
+            display: none;
+        }
+
+        .grid-container {
+            grid-template-columns: 1fr;
         }
     }
 
     @media (min-width: 567px) {
-        footer {
-            margin-top: 20px;
+        .xs-sm-menu {
+            display: none;
         }
     }
 
-    @media (min-width: 768px) {
-        footer {
-            margin-top: 10px;
-        }
-    }
+    @media (min-width: 768px) {}
 
-    @media (min-width: 992px) {
-        footer {
-            margin-top: 10px;
-        }
-    }
+    @media (min-width: 992px) {}
 
 }

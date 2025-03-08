@@ -1,0 +1,12 @@
+.header-container {
+    background-color: #5b5d5b;
+    align-items: baseline;
+    display: inline-flex;
+    color: white;
+
+    h1,
+    mat-icon {
+        font-size: 20px;
+        margin: 20px
+    }
+}

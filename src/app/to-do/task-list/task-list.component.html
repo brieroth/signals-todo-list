@@ -1,38 +1,103 @@
 <section class="todo-component-container">
-    <app-search-task (searchTerm)="getSearchTerm($event)"></app-search-task>
-    <section fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start start">
-        <mat-list *ngFor="let task of tasks()" fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start center">
-            <mat-list-item class="mat-list-item_container task-title" [ngClass]="{ 'strikethrough': task.status }">
-                <section>
-                    <input type="checkbox" [checked]="task.status" (change)="toggleTaskCompletion(task.id)" />
-                    <p>{{task.title}} </p>
+    <app-header></app-header>
+    <section class="todo-content-container">
+        <section class="search-action-container">
+            <app-search-task (searchTerm)="getSearchTerm($event)"></app-search-task>
+            <section class="todo-actions xs-sm-menu">
+                <button matSuffix mat-icon-button (click)="getCompletedTasks()" matTooltip="completed tasks"
+                    class="action-completed">
+                    <mat-icon matBadge="{{signalService.completedCount()}}" aria-hidden="false" aria-label="task icon"
+                        ><i class="fa-solid fa-list-check"></i></mat-icon>
+                </button>
+                <button mat-icon-button (click)="getPendingTasks()" matTooltip="pending tasks" class="action-pending">
+                    <mat-icon matBadge="{{signalService.pendingCount()}}" matBadgeColor="accent" aria-hidden="false"
+                        aria-label="pending icon"><i class="fa-solid fa-list"></i></mat-icon>
+                </button>
+                <button matSuffix mat-icon-button (click)="refreshTasks()" matTooltip="all tasks"
+                    class="action-refresh">
+                    <mat-icon matSuffix aria-hidden="false" aria-label="refresh icon" fontIcon="refresh"></mat-icon>
+                </button>
+            </section>
+        </section>
+        <mat-card class="tasks-stats-card">
+            <mat-card-header>
+              <mat-card-title>Tasks Stats</mat-card-title>
+              <mat-card-subtitle>Overview of your tasks</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="tasks-stats-grid-container">
+              <section class="tasks-stats-item completed-tasks">
+                <mat-icon class="tasks-stats-icon"><i class="fa-solid fa-list-check"></i></mat-icon>
+                <section class="tasks-stats-text">
+                  <h3>Completed Tasks</h3>
+                  <p>{{signalService.completedCount()}}</p>
+                  </section>
+              </section>
+              <section class="tasks-stats-item pending-tasks">
+                <mat-icon class="tasks-stats-icon"><i class="fa-solid fa-list"></i></mat-icon>
+                <section class="tasks-stats-text">
+                  <h3>Pending Tasks</h3>
+                  <p>{{signalService.pendingCount()}}</p>
+                  </section>
+              </section>
+            </mat-card-content>
+          </mat-card>
+          
+        
+        <section class="task-list-container">
+            <mat-list *ngFor="let task of tasks()" fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-list-item class="task-list-item_container task-title mat-elevation-z4"
+                    [ngClass]="{ 'strikethrough': task.status }">
                     <section>
-                        <button matSuffix mat-icon-button (click)="editTask(task)">
-                            <mat-icon matSuffix>edit</mat-icon>
+                        <input type="checkbox" [checked]="task.status" (change)="toggleTaskCompletion(task.id)"
+                            class="round-checkbox" />
+                        <button mat-icon-button matTooltip="Mark as favourite">
+                            <span [ngClass]="{active: task.status, inactive: !task.status}"
+                                class="fas fa-star"></span>
                         </button>
-                        <button matSuffix mat-icon-button (click)="deleteTask(task.id)">
-                            <mat-icon matSuffix>delete</mat-icon>
-                        </button>
+                        <p>{{task.title}} </p>
+                        <section>
+                            <button matSuffix mat-icon-button (click)="editTask(task)">
+                                <mat-icon matSuffix>edit</mat-icon>
+                            </button>
+                            <button matSuffix mat-icon-button (click)="deleteTask(task.id)">
+                                <mat-icon matSuffix>delete</mat-icon>
+                            </button>
+                        </section>
                     </section>
-                </section>
-            </mat-list-item>
-        </mat-list>
+                </mat-list-item>
+            </mat-list>
+            <!-- <mat-paginator [length]="tasks().length"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+        </mat-paginator> -->
+        </section>
     </section>
     <footer fxLayout="row" fxLayoutAlign="center center">
-        <button mat-icon-button (click)="addTask()" matTooltip="add a task" class="action-add">
-            <mat-icon>add</mat-icon>
-        </button>
-        <button matSuffix mat-icon-button (click)="getCompletedTasks()" matTooltip="completed tasks"
-            class="action-completed">
-            <mat-icon matBadge="{{signalService.completedCount()}}" aria-hidden="false" aria-label="task icon" fontIcon="task"></mat-icon>
-        </button>
-        <button mat-icon-button (click)="getPendingTasks()" matTooltip="pending tasks"
-            class="action-pending">
-            <mat-icon matBadge="{{signalService.pendingCount()}}" aria-hidden="false" aria-label="pending icon" fontIcon="task"></mat-icon>
-        </button>
-        <button matSuffix mat-icon-button (click)="refreshTasks()" matTooltip="all tasks"
-            class="action-refresh">
-            <mat-icon matSuffix aria-hidden="false" aria-label="refresh icon" fontIcon="refresh"></mat-icon>
-        </button>
+        <section>
+            <section class="xs-sm-menu">
+                <button mat-icon-button (click)="addTask()" matTooltip="add a task" class="action-add">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </section>
+            <section class="md-lg-menu">
+                <button mat-icon-button (click)="addTask()" matTooltip="add a task" class="action-add">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button matSuffix mat-icon-button (click)="getCompletedTasks()" matTooltip="completed tasks"
+                    class="action-completed">
+                    <mat-icon matBadge="{{signalService.completedCount()}}" aria-hidden="false" aria-label="task icon"
+                        ><i class="fa-solid fa-list-check"></i></mat-icon>
+                </button>
+                <button mat-icon-button (click)="getPendingTasks()" matTooltip="pending tasks" class="action-pending">
+                    <mat-icon matBadge="{{signalService.pendingCount()}}" aria-hidden="false" aria-label="pending icon"
+                        ><i class="fa-solid fa-list"></i></mat-icon>
+                </button>
+                <button matSuffix mat-icon-button (click)="refreshTasks()" matTooltip="all tasks"
+                    class="action-refresh">
+                    <mat-icon matSuffix aria-hidden="false" aria-label="refresh icon" fontIcon="refresh"></mat-icon>
+                </button>
+            </section>
+        </section>
     </footer>
 </section>

@@ -15,11 +15,17 @@ import { Items } from '../shared/mock-data-list';
 import { TaskSignalService } from '../service/task-signal.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { SearchTaskComponent } from '../search-task/search-task.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { HeaderComponent } from '../header/header.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [RouterOutlet, MatTooltipModule, SearchTaskComponent, MatDialogModule, FormsModule, MatListModule, CommonModule, MatIconModule, AddTaskComponent, MatBadgeModule, FormsModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButton, MatIconButton],
+  imports: [RouterOutlet, MatToolbarModule, MatChipsModule, MatCardModule, MatMenuModule, MatPaginatorModule, MatTooltipModule, HeaderComponent , SearchTaskComponent, MatDialogModule, FormsModule, MatListModule, CommonModule, MatIconModule, AddTaskComponent, MatBadgeModule, FormsModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButton, MatIconButton],
   templateUrl: `./task-list.component.html`,
   styleUrl: `./task-list.component.scss`
 })

@@ -1,12 +1,9 @@
-<section fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px grid">
-    <section>
-        <section>
-            <mat-form-field appearance="outline" class="form-input">
-                <mat-label>find task...</mat-label>
-                <input matInput [(ngModel)]="titleTerm"/>
-                <button matSuffix mat-icon-button (click)="searchTaskByTitle()">
-                    <mat-icon matSuffix>search</mat-icon>
-                </button>
-            </mat-form-field>
-        </section>
-    </section>
+<section>
+    <mat-form-field appearance="fill" class="form-input">
+        <mat-label>Search...</mat-label>
+        <input matInput [(ngModel)]="titleTerm" />
+        <button matPrefix mat-icon-button (click)="searchTaskByTitle()">
+            <mat-icon matPrefix>search</mat-icon>
+        </button>
+    </mat-form-field>
+</section>

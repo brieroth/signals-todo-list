@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { environment } from '../environments/environments';
 
 
 @Component({
@@ -13,5 +14,5 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'signals-todo-list';
+  title = environment.title;
 }
