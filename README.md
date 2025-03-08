@@ -41,16 +41,13 @@ Focus on modulartiy, reusablility....
 
 State Management using Signals
     -store and manage the tasks array
-    **Service Class (logic) **Component (handle interaction w/ service class to UI)
     -add task,
     -mark as complete, 
     -delete task, 
     -search tasks by title,
     -filter tasks (completed, uncompleted...)
 
-Styling
-- Focus on responsiveness & accessability
+![todo-MobileView](https://github.com/user-attachments/assets/245394eb-bc12-4fd0-817e-fe65ead2c17d)
 
-![image](https://github.com/user-attachments/assets/98c9a8bc-ce67-491f-b80e-f67dfcdb4a39)
-
+![todo-DesktopView](https://github.com/user-attachments/assets/88e39bab-00ac-4252-a5ed-02706d77244d)
 
